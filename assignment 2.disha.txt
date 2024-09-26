@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 100
+
+
+struct Student 
+{
+    char usn[15];
+    char name[50];
+    char mobile[15];
+};
+
+
+void inputStudentDetails(struct Student *s) 
+{
+    printf("Enter USN: ");
+    scanf("%s", s->usn);
+    printf("Enter Name: ");
+    scanf(" %[^\n]", s->name);
+    printf("Enter Mobile Number: ");
+    scanf("%s", s->mobile);
+}
+
+
+void displayStudentDetails(struct Student s)
+ {
+    printf("\nStudent Details:\n");
+    printf("USN: %s\n", s.usn);
+    printf("Name: %s\n", s.name);
+    printf("Mobile Number: %s\n", s.mobile);
+}
+
+int main() {
+    struct Student students[MAX_STUDENTS];
+    int n, i;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+
+    for (i = 0; i < n; i++) {
+        printf("\nEntering details for student %d:\n", i + 1);
+        inputStudentDetails(&students[i]);
+    }
+
+
+    for (i = 0; i < n; i++) {
+        displayStudentDetails (Srudents[i]);
+    }
+
+    return 0;
+}
