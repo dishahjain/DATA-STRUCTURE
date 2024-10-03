@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 10
+
+void push(int);
+void pop();
+void display();
+
+int stack[SIZE], top = -1;
+
+int main() {
+    int value, choice;
+
+    while (1) {
+        printf("\n***MENU***");
+        printf("\n1. Push\n2. Pop\n3. Display\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to be inserted: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("\nWrong selection, try again.");
+        }
+    }
+    return 0;
+}
+
+void push(int value) {
+    if (top == SIZE - 1) {
+        printf("\nSTACK IS FULL");
+    } else {
+        top++;
+        stack[top] = value;
+        printf("\nInserted: %d", value);
+    }
+}
+
+void pop() {
+    if (top == -1) {
+        printf("\nSTACK IS EMPTY");
+    } else {
+        printf("\nDeleted: %d", stack[top]);
+        top--;
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("\nSTACK IS EMPTY!");
+    } else {
+        int i;
+        printf("\nStack elements are:\n");
+        for (i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
