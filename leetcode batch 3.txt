@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+
+char* removeDuplicates(char* s) {
+    int length = strlen(s);
+    char* result = (char*)malloc((length + 1) * sizeof(char)); 
+    int i, j = 0; 
+
+    for (i = 0; i < length; i++) {
+        if (j > 0 && result[j - 1] == s[i]) {
+            j--; 
+        } else {
+            result[j] = s[i]; 
+            j++;
+        }
+    }
+    
+    result[j] = '\0';
+    return result;
+}
